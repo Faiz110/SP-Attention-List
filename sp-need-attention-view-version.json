@@ -1,0 +1,105 @@
+{
+    "$schema": "https://developer.microsoft.com/json-schemas/sp/v2/view-formatting.schema.json",
+    "rowFormatter": {
+      "elmType": "div",
+      "attributes": {
+        "class": "ms-DetailsRow"
+      },
+      "style": {
+        "display": "flex"
+      },
+      "children": [
+        {
+          "elmType": "div",
+          "style": {
+            "display": "flex",
+            "flex-direction": "column",
+            "width": "100%"
+          },
+          "children": [
+            {
+              "elmType": "div",
+              "attributes": {
+                "class": "ms-DetailsRow-cell"
+              },
+              "customRowAction": {
+                "action": "defaultClick"
+              },
+              "children": [
+                {
+                  "elmType": "div",
+                  "style": {
+                    "display": "flex",
+                    "flex-wrap": "wrap"
+                  },
+                  "children": [
+                    {
+                      "forEach": "column in @currentWeb.Lists.getByTitle('YourListTitle').Fields.filter(f => f.InternalName == 'KM_Labels' || f.InternalName == 'KM_Support_Type' || f.InternalName == 'KM_Products' || f.InternalName == 'System_Labels' || f.InternalName == 'Site_Labels')",
+                      "elmType": "div",
+                      "style": {
+                        "box-sizing": "border-box",
+                        "padding": "4px 8px",
+                        "margin": "4px",
+                        "border-radius": "16px",
+                        "background-color": "=if([$column.InternalName] == '', '#FFF4CE', '#F3F2F1')",
+                        "display": "flex",
+                        "align-items": "center"
+                      },
+                      "children": [
+                        {
+                          "elmType": "span",
+                          "style": {
+                            "display": "=if([$column.InternalName] == '', 'block', 'none')",
+                            "margin-right": "4px",
+                            "color": "#797775"
+                          },
+                          "attributes": {
+                            "iconName": "Warning"
+                          }
+                        },
+                        {
+                          "elmType": "span",
+                          "style": {
+                            "font-weight": "600",
+                            "margin-right": "8px",
+                            "color": "#323130"
+                          },
+                          "txtContent": "@column.Title + ':'"
+                        },
+                        {
+                          "elmType": "span",
+                          "style": {
+                            "color": "=if([$column.InternalName] == '', '#797775', '#323130')",
+                            "font-style": "=if([$column.InternalName] == '', 'italic', 'normal')"
+                          },
+                          "txtContent": "=if([$column.InternalName] == '', 'Required', [$column.InternalName])"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "elmType": "div",
+              "children": [
+                {
+                  "elmType": "div",
+                  "attributes": {
+                    "class": "ms-DetailsRow-fields"
+                  },
+                  "style": {
+                    "display": "flex",
+                    "flex-direction": "row",
+                    "align-items": "stretch",
+                    "box-sizing": "border-box",
+                    "ms-flex-align": "stretch"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  }
