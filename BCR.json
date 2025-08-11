@@ -1,0 +1,42 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/sp/v2/form-formatting.schema.json",
+  "sections": [
+    {
+      "displayname": "Additional Fields",
+      "fields": [
+        {
+          "field": "field_10",
+          "display": "=if(@isNew, 'false', 'true')"
+        },
+        {
+          "field": "AssignedAnalyst_x0028_s_x0029_",
+          "display": "=if(@isNew, 'false', 'true')"
+        },
+        {
+          "field": "field_7",
+          "display": "=if(@isNew, 'false', 'true')"
+        },
+        {
+          "field": "field_8",
+          "display": "=if(@isNew, 'false', 'true')"
+        },
+        {
+          "field": "IfHighRiskFullBCR_x002c_FInalDis",
+          "display": "=if(@isNew, 'false', 'true')"
+        },
+        {
+          "field": "BCRLocation",
+          "display": "=if(@isNew, 'false', 'true')"
+        },
+        {
+          "field": "Author",
+          "display": "=if(@isNew, 'false', 'true')"
+        },
+        {
+          "field": "MA_x002d_621CommentsOnly",
+          "display": "=if(@isNew, 'false', 'true')"
+        }
+      ]
+    }
+  ]
+}
