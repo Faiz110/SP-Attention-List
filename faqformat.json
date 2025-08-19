@@ -1,0 +1,46 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/sp/v2/view-formatting.schema.json",
+  "templateRows": {
+    "elmType": "div",
+    "style": {
+      "border": "1px solid #ccc",
+      "border-radius": "5px",
+      "padding": "10px",
+      "margin-bottom": "10px",
+      "background-color": "white"
+    },
+    "children": [
+      {
+        "elmType": "div",
+        "style": {
+          "font-weight": "bold",
+          "cursor": "pointer",
+          "padding": "5px 0"
+        },
+        "attributes": {
+          "class": "toggle-question"
+        },
+        "txtContent": "='Q: ' + [$Question]"
+      },
+      {
+        "elmType": "div",
+        "attributes": {
+          "class": "answer-box"
+        },
+        "style": {
+          "margin-top": "5px",
+          "display": "none",
+          "white-space": "pre-wrap"
+        },
+        "txtContent": "='A: ' + [$Answer]"
+      },
+      {
+        "elmType": "script",
+        "attributes": {
+          "type": "text/javascript"
+        },
+        "txtContent": "(function(){document.querySelectorAll('.toggle-question').forEach(function(q){q.onclick=function(){var a=q.nextElementSibling;a.style.display=a.style.display==='none'?'block':'none';};});})();"
+      }
+    ]
+  }
+}
