@@ -102,4 +102,22 @@
         }
       ]
     }
+
   }
+--batch_12345
+@{join(
+  body('Get_items')?['value'],
+  concat(
+    '
+--batch_12345
+Content-Type: application/http
+Content-Transfer-Encoding: binary
+
+DELETE ', triggerOutputs()?['headers']['x-ms-site-relative-url'], '/_api/web/lists/getbytitle(''YourListName'')/items(', item()?['Id'], ')
+If-Match: *
+'
+  )
+)}
+--batch_12345--
+Accept: application/json;odata=verbose
+Content-Type: multipart/mixed; boundary=batch_12345
